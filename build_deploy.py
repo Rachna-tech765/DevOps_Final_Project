@@ -4,17 +4,30 @@ client = docker.from_env()
 
 def deploy_app(image_name, version):
     print(f"Building image {image_name}:{version}...")
-    # 1. Build the image 
-    image, build_logs = client.images.build(path="./src", tag=f"{image_name}:{version}")
     
-    # 2. Run the container 
-    print(f"Starting container...")
+    image, build_logs = client.images.build(
+        path=".", 
+        tag=f"{image_name}:{version}"
+    )
+
+    # Remove existing container if exists
+    try:
+        old_container = client.containers.get(f"web_app_{version}")
+        print("Stopping existing container...")
+        old_container.stop()
+        old_container.remove()
+    except:
+        pass
+
+    print("Starting container...")
     container = client.containers.run(
-        image.id, 
-        detach=True, 
-        ports={'8080/tcp': 8080},
+        image.id,
+        detach=True,
+        ports={'5000/tcp': 5000},
         name=f"web_app_{version}"
     )
+
     print(f"Deployment successful: {container.id}")
 
-deploy_app("my-python-app", "v1")
+
+deploy_app("healthcare-app", "v1")
