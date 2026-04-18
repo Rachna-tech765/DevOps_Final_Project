@@ -9,13 +9,32 @@
         button { background:#38bdf8; }
     </style>
 </head>
-<body>
-<div class="box">
+
+<!-- <div class="box">
     <h2>Cyber Security Login</h2>
     <input id="user" placeholder="Username">
     <input id="pass" type="password" placeholder="Password">
     <button onclick="login()">Login</button>
+    
+    <p style="margin-top: 15px; font-size: 14px;">
+        New User? <a href="/signup_page" style="color: #38bdf8; text-decoration: none;">Create Account</a>
+    </p>
+</div> -->
+
+<div class="box">
+    <h2>Cyber Security Login</h2>
+    
+    <form action="/login" method="POST">
+        <input name="username" placeholder="Username" required style="width: 100%; padding: 10px; margin: 10px 0;">
+        <input name="password" type="password" placeholder="Password" required style="width: 100%; padding: 10px; margin: 10px 0;">
+        <button type="submit" style="width: 100%; padding: 10px; background: #38bdf8; border: none; color: white;">Login</button>
+    </form>
+    <p style="margin-top: 15px; font-size: 14px;">
+        New User? <a href="/signup_page" style="color: #38bdf8; text-decoration: none;">Create Account</a>
+    </p>
 </div>
+
+
 <script>
 function login(){
     if(document.getElementById('user').value==='admin' && document.getElementById('pass').value==='1234'){
