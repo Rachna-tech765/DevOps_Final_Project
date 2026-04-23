@@ -1,341 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cyber Threat Dashboard v3.1</title>
+    <meta charset="UTF-8">
+    <title>SEC-NODE Intelligence Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <style>
-        body {
-            background: #0f172a;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
+        :root { --bg: #050505; --accent: #0070f3; --card: #111; --danger: #ff4d4d; --text: #888; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+        
+        /* SIDEBAR */
+        .sidebar { width: 260px; background: #000; border-right: 1px solid #222; padding: 25px; display: flex; flex-direction: column; z-index: 10; }
+        .logo { color: var(--accent); font-size: 22px; font-weight: bold; margin-bottom: 40px; }
+        .nav-item { padding: 15px; margin-bottom: 8px; border-radius: 10px; cursor: pointer; color: var(--text); transition: 0.3s; }
+        .nav-item.active { background: var(--accent); color: white; box-shadow: 0 5px 15px rgba(0, 112, 243, 0.3); }
+        .nav-item:hover:not(.active) { background: #111; color: white; }
+        .status-footer { margin-top: auto; font-size: 12px; color: #444; border-top: 1px solid #222; padding-top: 15px; }
 
-        h1 {
-            text-align: center;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
+        /* MAIN CONTENT */
+        .main { flex: 1; padding: 40px; overflow-y: auto; position: relative; }
+        .live-tag { position: absolute; top: 20px; right: 40px; font-size: 11px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .pulse { width: 10px; height: 10px; background: var(--danger); border-radius: 50%; animation: blink 1.5s infinite; }
+        @keyframes blink { 50% { opacity: 0.2; } }
 
-        .logout-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #ef4444;
-            border: none;
-            padding: 8px 14px;
-            color: white;
-            cursor: pointer;
-            border-radius: 6px;
-        }
+        .section { display: none; }
+        .section.active { display: block; }
 
-        /* GRID */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 15px;
-            width: 100%;
-            max-width: 1200px;
-            margin: auto;
-        }
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+        .card { background: var(--card); border: 1px solid #222; padding: 20px; border-radius: 12px; transition: 0.3s; }
+        .card:hover { border-color: #444; }
 
-        .card {
-            background: #1e293b;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-        }
+        /* ALERT CENTER BOXES */
+        .alert-row { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .incident-box { background: var(--card); border: 1px solid #222; padding: 20px; border-radius: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-analyze { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; }
 
-        .ping {
-            height: 8px;
-            width: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #22c55e;
-            margin-right: 8px;
-        }
-
-        /* CHART + RADAR SECTION */
-        .analytics {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 15px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        .chart-box {
-            background: #1e293b;
-            padding: 10px;
-            border-radius: 8px;
-            height: 250px;
-        }
-
-        .radar-box {
-            background: #1e293b;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .radar-item {
-            font-size: 12px;
-            margin-top: 10px;
-        }
-
-        .bar {
-            width: 100%;
-            height: 8px;
-            background: #0f172a;
-            border-radius: 5px;
-            border: 1px solid #334155;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-
-        .bar div {
-            height: 100%;
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-
-        #lowBar { background: #22c55e; }
-        #medBar { background: #facc15; }
-        #highBar { background: #ef4444; }
-
-        /* BOTTOM */
-        .bottom-row {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 15px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        .terminal {
-            background: #000;
-            color: #38bdf8;
-            font-family: monospace;
-            padding: 10px;
-            height: 160px;
-            overflow-y: auto;
-            font-size: 12px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 8px;
-            background: #38bdf8;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .btn-danger {
-            background: #ef4444;
-            color: white;
-        }
-
-        #alertBox {
-            display: none;
-            background: #ef4444;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-            animation: flash 1s infinite;
-        }
-
-        @keyframes flash {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .critical {
-            animation: glitch 0.3s infinite;
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            25% { transform: translate(2px,-2px); }
-            50% { transform: translate(-2px,2px); }
-            75% { transform: translate(2px,2px); }
-            100% { transform: translate(0); }
-        }
+        canvas { width: 100% !important; max-height: 350px; }
     </style>
 </head>
-
 <body>
 
-<button class="logout-btn" onclick="logout()">LOGOUT</button>
-
-<div id="alertBox">🚨 CRITICAL SYSTEM BREACH DETECTED 🚨</div>
-
-<h1 id="title">THREAT_MONITOR_OS</h1>
-
-<!-- TOP GRID -->
-<div class="dashboard-grid">
-    <div class="card"><small>SYSTEM STATUS</small><br><span class="ping" id="ping"></span><span id="status">SECURE</span></div>
-    <div class="card"><small>ACTIVE THREATS</small><div id="threats">0</div></div>
-    <div class="card"><small>IPS BLOCKED</small><div>1242</div></div>
-    <div class="card"><small>CPU LOAD</small><div id="cpu">23%</div></div>
-    <div class="card"><small>TRAFFIC</small><div id="traffic">120 Mbps</div></div>
-    <div class="card"><small>GLOBAL THREATS</small><div id="geo"></div></div>
-</div>
-
-<!-- ANALYTICS SECTION -->
-<div class="analytics">
-
-    <div class="chart-box">
-        <canvas id="chart"></canvas>
-    </div>
-
-    <div class="radar-box">
-        <small>THREAT RADAR</small>
-
-        <div class="radar-item">
-            LOW
-            <div class="bar"><div id="lowBar"></div></div>
-        </div>
-
-        <div class="radar-item">
-            MED
-            <div class="bar"><div id="medBar"></div></div>
-        </div>
-
-        <div class="radar-item">
-            HIGH
-            <div class="bar"><div id="highBar"></div></div>
+    <div class="sidebar">
+        <div class="logo">🛡️ SEC-NODE</div>
+        <div class="nav-item active" onclick="tab('overview', this)">Overview</div>
+        <div class="nav-item" onclick="tab('logs', this)">Threat Logs</div>
+        <div class="nav-item" onclick="tab('alerts', this)">Alert Center</div>
+        <div class="status-footer">
+            <span style="color:#00ff00">●</span> Status: Normal<br>Node: US-EAST-CLUSTER
         </div>
     </div>
 
-</div>
+    <div class="main">
+        <div class="live-tag"><div class="pulse"></div> LIVE MONITORING</div>
 
-<!-- BOTTOM -->
-<div class="bottom-row">
+        <div id="overview" class="section active">
+            <h1>System Intelligence</h1>
+            <div class="stat-grid">
+                <div class="card"><small>Threats</small><div style="font-size:28px; color:var(--danger)">0</div></div>
+                <div class="card"><small>Escalations</small><div style="font-size:28px; color:var(--accent)">0</div></div>
+                <div class="card"><small>Requests</small><div style="font-size:28px">1,240</div></div>
+                <div class="card"><small>Latency</small><div style="font-size:28px; color:#facc15">24ms</div></div>
+            </div>
+            <div class="card" style="height: 380px;">
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
 
-    <div class="card">
-        <button onclick="executeAction('Firewall Purged')">PURGE FIREWALL</button>
-        <button onclick="executeAction('Deep Scan')">RUN DEEP SCAN</button>
-        <button onclick="simulateAttack()" class="btn-danger">SIMULATE BREACH</button>
+        <div id="logs" class="section">
+            <h1>Threat Logs</h1>
+            <div class="card">
+                <table width="100%" style="border-collapse:collapse; text-align:left">
+                    <tr style="color:var(--text); font-size:12px; border-bottom:1px solid #222">
+                        <th style="padding:15px">SOURCE IP</th><th style="padding:15px">TIME</th><th style="padding:15px">VECTOR</th>
+                    </tr>
+                    <tbody id="log-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="alerts" class="section">
+            <h1>Alert Center</h1>
+            <div class="alert-row">
+                <div>
+                    <div class="incident-box">
+                        <div><small style="color:var(--accent)">BRUTE FORCE</small><h2>54 Events</h2><span style="color:var(--accent)">185.22.1.99</span></div>
+                        <div style="text-align:right;"><button class="btn-analyze">Analyze</button><div style="font-size:20px; margin-top:5px">98%</div></div>
+                    </div>
+                    <div class="incident-box">
+                        <div><small style="color:var(--accent)">INVASIVE SCAN</small><h2>12 Events</h2><span style="color:var(--accent)">45.1.22.11</span></div>
+                        <div style="text-align:right;"><button class="btn-analyze">Analyze</button><div style="font-size:20px; margin-top:5px">82%</div></div>
+                    </div>
+                    <div class="incident-box">
+                        <div><small style="color:var(--accent)">XSS ATTEMPT</small><h2>4 Events</h2><span style="color:var(--accent)">102.3.44.1</span></div>
+                        <div style="text-align:right;"><button class="btn-analyze">Analyze</button><div style="font-size:20px; margin-top:5px">65%</div></div>
+                    </div>
+                </div>
+                <div class="card" style="text-align:center">
+                    <h4>Risk Distribution</h4>
+                    <canvas id="donutChart"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <div class="terminal" id="term-out">> System ready...</div>
-        <input type="text" id="term-in" placeholder="Try: /trace-ip /clear /scan-network">
-    </div>
-
-</div>
-
-<script>
-// Logout
-function logout(){
-    window.location.href = "login.html";
-}
-
-// Chart
-const ctx = document.getElementById('chart').getContext('2d');
-
-let chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: Array(20).fill(''),
-        datasets: [
-            {
-                data: Array(20).fill(0),
-                borderColor: '#38bdf8',
-                tension: 0.4,
-                pointRadius: 0
-            },
-            {
-                data: Array(20).fill(0),
-                borderColor: '#ef4444',
-                tension: 0.4,
-                pointRadius: 0
-            }
-        ]
-    },
-    options: {
-        plugins: { legend: { display: false } },
-        scales: {
-            x: { display: false },
-            y: { grid: { color: '#334155' } }
+    <script>
+        // TAB LOGIC (Yeh buttons ko chalu karega)
+        function tab(id, el) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            el.classList.add('active');
         }
-    }
-});
 
-// Terminal
-const termOut = document.getElementById('term-out');
+        // --- LINE CHART (Overview) ---
+        try {
+            const ctx = document.getElementById('lineChart').getContext('2d');
+            const lineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array(20).fill(''),
+                    datasets: [{
+                        label: 'Network Load',
+                        data: Array(20).fill(60),
+                        borderColor: '#0070f3',
+                        backgroundColor: 'rgba(0, 112, 243, 0.05)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { enabled: true } },
+                    scales: { x: { display: false }, y: { grid: { color: '#222' }, ticks: { color: '#444' } } }
+                }
+            });
 
-function log(msg){
-    termOut.innerHTML += "<br>> " + msg;
-    termOut.scrollTop = termOut.scrollHeight;
-}
+            setInterval(() => {
+                lineChart.data.datasets[0].data.push(Math.random()*40 + 40);
+                lineChart.data.datasets[0].data.shift();
+                lineChart.update('none');
+            }, 2000);
+        } catch(e) { console.error("Line chart failed to load"); }
 
-setInterval(()=>{
-    const logs = [
-        "Suspicious packet detected",
-        "Port scan detected",
-        "Firewall rule updated",
-        "Unauthorized login attempt",
-        "IP blacklisted"
-    ];
-    log(logs[Math.floor(Math.random()*logs.length)]);
-},2000);
+        // --- DONUT CHART (Alerts) ---
+        try {
+            const dCtx = document.getElementById('donutChart').getContext('2d');
+            new Chart(dCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Critical', 'High', 'Medium'],
+                    datasets: [{
+                        data: [60, 25, 15],
+                        backgroundColor: ['#ff4d4d', '#facc15', '#0070f3'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { cutout: '80%', plugins: { legend: { position: 'bottom', labels: { color: '#888', usePointStyle: true } } } }
+            });
+        } catch(e) { console.error("Donut chart failed to load"); }
 
-// Fake stats
-setInterval(()=>{
-    let v = Math.random()*100;
-    let t = Math.random()*50;
-
-    chart.data.datasets[0].data.push(v);
-    chart.data.datasets[0].data.shift();
-
-    chart.data.datasets[1].data.push(t);
-    chart.data.datasets[1].data.shift();
-
-    chart.update('none');
-
-    document.getElementById('threats').innerText = Math.floor(v/10);
-    document.getElementById('cpu').innerText = Math.floor(Math.random()*100)+"%";
-    document.getElementById('traffic').innerText = Math.floor(Math.random()*500)+" Mbps";
-},2000);
-
-// Geo
-setInterval(()=>{
-    document.getElementById('geo').innerHTML = `
-    🇷🇺 ${Math.floor(Math.random()*50)}<br>
-    🇨🇳 ${Math.floor(Math.random()*50)}<br>
-    🇺🇸 ${Math.floor(Math.random()*50)}
-    `;
-},3000);
-
-// Radar
-function updateRadar(){
-    document.getElementById("lowBar").style.width = Math.random()*100 + "%";
-    document.getElementById("medBar").style.width = Math.random()*100 + "%";
-    document.getElementById("highBar").style.width = Math.random()*100 + "%";
-}
-
-setInterval(updateRadar,2500);
-updateRadar();
-
-// Actions
-function executeAction(a){
-    log("Executing: "+a);
-}
-
-function simulateAttack(){
-    document.getElementById('alertBox').style.display = 'block';
-    document.getElementById('status').innerText = 'CRITICAL';
-    document.getElementById('ping').style.background = '#ef4444';
-    document.getElementById('title').classList.add('critical');
-    log("SYSTEM BREACH ACTIVE");
-}
-</script>
-
+        // LOGS GENERATOR
+        setInterval(() => {
+            const body = document.getElementById('log-list');
+            const row = document.createElement('tr');
+            row.innerHTML = `<td style="padding:15px; color:var(--danger)">192.168.1.${Math.floor(Math.random()*255)}</td><td style="padding:15px">${new Date().toLocaleTimeString()}</td><td style="padding:15px"><span style="color:var(--danger); background:rgba(255,77,77,0.1); padding:4px 8px; border-radius:5px; font-size:11px">Threat Detected</span></td>`;
+            if(body.children.length > 8) body.removeChild(body.lastChild);
+            body.prepend(row);
+        }, 3000);
+    </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

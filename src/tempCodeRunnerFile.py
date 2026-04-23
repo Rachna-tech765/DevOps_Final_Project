@@ -131,13 +131,3 @@ def logout():
 if __name__ == '__main__':
     print(f"--- Server starting on http://localhost:{PORT} ---")
     app.run(host='0.0.0.0', port=PORT, debug=True)
-
-
-
-
-
-
-
-
-
-

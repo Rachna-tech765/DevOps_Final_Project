@@ -1,0 +1,368 @@
+2026-04-23 19:14:25,022 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 19:14:25,022 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 19:14:25,030 | INFO |  * Restarting with stat
+2026-04-23 19:14:25,559 | WARNING |  * Debugger is active!
+2026-04-23 19:14:25,572 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:14:51,976 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 19:14:51,983 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 19:14:51,983 | INFO |  * Restarting with stat
+2026-04-23 19:14:52,463 | WARNING |  * Debugger is active!
+2026-04-23 19:14:52,463 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:18:16,697 | INFO | 127.0.0.1 - - [23/Apr/2026 19:18:16] "[33mGET / HTTP/1.1[0m" 404 -
+2026-04-23 19:18:16,787 | INFO | 127.0.0.1 - - [23/Apr/2026 19:18:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-23 19:21:18,544 | INFO | Database initialized successfully.
+2026-04-23 19:21:18,626 | WARNING |  * Debugger is active!
+2026-04-23 19:21:18,633 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:21:36,243 | INFO |  * Detected change in 'c:\\Users\\Rachna kumari\\OneDrive\\Desktop\\mini project devops\\Devops_Mini_Project\\src\\app.py', reloading
+2026-04-23 19:21:36,813 | INFO | Database initialized successfully.
+2026-04-23 19:21:36,879 | WARNING |  * Debugger is active!
+2026-04-23 19:21:36,884 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:21:50,976 | INFO | Database initialized successfully.
+2026-04-23 19:21:51,067 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 19:21:51,068 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 19:21:51,069 | INFO |  * Restarting with stat
+2026-04-23 19:21:51,515 | INFO | Database initialized successfully.
+2026-04-23 19:21:51,572 | WARNING |  * Debugger is active!
+2026-04-23 19:21:51,577 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:21:59,557 | INFO | 10.14.35.20 - - [23/Apr/2026 19:21:59] "GET / HTTP/1.1" 200 -
+2026-04-23 19:22:04,781 | WARNING | Failed login attempt for: rrr
+2026-04-23 19:22:04,781 | INFO | 10.14.35.20 - - [23/Apr/2026 19:22:04] "POST /login HTTP/1.1" 200 -
+2026-04-23 19:22:09,582 | INFO | 10.14.35.20 - - [23/Apr/2026 19:22:09] "GET / HTTP/1.1" 200 -
+2026-04-23 19:22:50,203 | WARNING | Failed login attempt for: student
+2026-04-23 19:22:50,204 | INFO | 10.14.35.20 - - [23/Apr/2026 19:22:50] "POST /login HTTP/1.1" 200 -
+2026-04-23 19:22:56,939 | INFO | 10.14.35.20 - - [23/Apr/2026 19:22:56] "GET / HTTP/1.1" 200 -
+2026-04-23 19:22:58,796 | INFO | 10.14.35.20 - - [23/Apr/2026 19:22:58] "GET /signup_page HTTP/1.1" 200 -
+2026-04-23 19:23:04,439 | INFO | New user registered: student
+2026-04-23 19:23:04,442 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:04] "POST /register HTTP/1.1" 200 -
+2026-04-23 19:23:06,745 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:06] "GET / HTTP/1.1" 200 -
+2026-04-23 19:23:11,660 | INFO | User login successful: student
+2026-04-23 19:23:11,666 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 19:23:11,732 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:11] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 19:23:14,858 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:23:14,860 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:14] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:17,863 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:23:17,865 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:17] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:20,860 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:23:20,860 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:20] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:23,862 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:23:23,863 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:23] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:26,855 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:23:26,864 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:26] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:29,865 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:23:29,865 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:29] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:32,865 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:23:32,865 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:32] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:35,865 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:23:35,870 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:35] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:38,860 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:23:38,860 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:38] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:41,861 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:23:41,863 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:41] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:44,865 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:23:44,866 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:44] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:47,866 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:23:47,866 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:47] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:50,864 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:23:50,864 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:50] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:53,868 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:23:53,870 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:53] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:56,862 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:23:56,864 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:56] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:23:59,860 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:23:59,860 | INFO | 10.14.35.20 - - [23/Apr/2026 19:23:59] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:02,866 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:24:02,866 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:02] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:03,601 | INFO | User logged out: student
+2026-04-23 19:24:03,603 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:03] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-23 19:24:03,626 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:03] "GET / HTTP/1.1" 200 -
+2026-04-23 19:24:09,677 | INFO | User login successful: student
+2026-04-23 19:24:09,681 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:09] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 19:24:09,691 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:09] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 19:24:12,793 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:24:12,793 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:12] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:15,784 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:24:15,790 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:15] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:18,793 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:24:18,796 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:21,792 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:24:21,792 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:21] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:25,559 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:24:25,564 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:25] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:28,559 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:24:28,559 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:28] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:31,566 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:24:31,570 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:31] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:34,569 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:24:34,569 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:34] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:37,553 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:24:37,553 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:37] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:40,556 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:24:40,556 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:40] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:43,560 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:24:43,560 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:43] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:46,564 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:24:46,569 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:46] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:49,567 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:24:49,568 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:49] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:52,561 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:24:52,561 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:52] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:55,560 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:24:55,560 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:55] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:24:58,559 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:24:58,562 | INFO | 10.14.35.20 - - [23/Apr/2026 19:24:58] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:25:01,565 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:25:01,565 | INFO | 10.14.35.20 - - [23/Apr/2026 19:25:01] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:25:04,561 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:25:04,561 | INFO | 10.14.35.20 - - [23/Apr/2026 19:25:04] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:25:07,561 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:25:07,567 | INFO | 10.14.35.20 - - [23/Apr/2026 19:25:07] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:25:10,565 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:25:10,567 | INFO | 10.14.35.20 - - [23/Apr/2026 19:25:10] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:25:13,555 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:25:13,555 | INFO | 10.14.35.20 - - [23/Apr/2026 19:25:13] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:25:16,563 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:25:16,563 | INFO | 10.14.35.20 - - [23/Apr/2026 19:25:16] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:25:19,556 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:25:19,557 | INFO | 10.14.35.20 - - [23/Apr/2026 19:25:19] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:26:18,557 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:26:18,557 | INFO | 10.14.35.20 - - [23/Apr/2026 19:26:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:27:18,563 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:27:18,563 | INFO | 10.14.35.20 - - [23/Apr/2026 19:27:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:28:18,566 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:28:18,566 | INFO | 10.14.35.20 - - [23/Apr/2026 19:28:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:29:18,565 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:29:18,565 | INFO | 10.14.35.20 - - [23/Apr/2026 19:29:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:30:18,558 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:30:18,558 | INFO | 10.14.35.20 - - [23/Apr/2026 19:30:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:31:18,569 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:31:18,573 | INFO | 10.14.35.20 - - [23/Apr/2026 19:31:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:31:55,318 | INFO | Database initialized successfully.
+2026-04-23 19:31:55,401 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 19:31:55,401 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 19:31:55,405 | INFO |  * Restarting with stat
+2026-04-23 19:31:55,903 | INFO | Database initialized successfully.
+2026-04-23 19:31:55,959 | WARNING |  * Debugger is active!
+2026-04-23 19:31:55,959 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:32:03,940 | INFO | 10.14.35.20 - - [23/Apr/2026 19:32:03] "GET / HTTP/1.1" 200 -
+2026-04-23 19:32:08,723 | INFO | User login successful: student
+2026-04-23 19:32:08,729 | INFO | 10.14.35.20 - - [23/Apr/2026 19:32:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 19:32:08,823 | INFO | 10.14.35.20 - - [23/Apr/2026 19:32:08] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 19:32:18,569 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:32:18,573 | INFO | 10.14.35.20 - - [23/Apr/2026 19:32:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:32:50,112 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:32:50,115 | INFO | 10.14.35.20 - - [23/Apr/2026 19:32:50] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:32:51,783 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:32:51,783 | INFO | 10.14.35.20 - - [23/Apr/2026 19:32:51] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:32:54,787 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:32:54,787 | INFO | 10.14.35.20 - - [23/Apr/2026 19:32:54] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:32:58,561 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:32:58,565 | INFO | 10.14.35.20 - - [23/Apr/2026 19:32:58] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:01,566 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:01,566 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:01] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:04,554 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:04,554 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:04] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:07,571 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:07,571 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:07] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:10,563 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:33:10,563 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:10] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:13,564 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:33:13,564 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:13] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:16,558 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:16,560 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:16] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:19,572 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:19,572 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:19] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:22,566 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:22,569 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:22] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:25,564 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:25,564 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:25] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:28,565 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:33:28,565 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:28] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:31,565 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:33:31,566 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:31] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:34,563 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:33:34,565 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:34] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:37,560 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:37,562 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:37] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:40,588 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:33:40,595 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:40] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:43,565 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:33:43,565 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:43] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:46,564 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:33:46,564 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:46] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:49,561 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:49,561 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:49] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:52,568 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:33:52,568 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:52] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:33:55,563 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:33:55,563 | INFO | 10.14.35.20 - - [23/Apr/2026 19:33:55] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:44:42,416 | INFO | Database initialized successfully.
+2026-04-23 19:44:42,794 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 19:44:42,796 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 19:44:42,798 | INFO |  * Restarting with stat
+2026-04-23 19:44:43,330 | INFO | Database initialized successfully.
+2026-04-23 19:44:43,393 | WARNING |  * Debugger is active!
+2026-04-23 19:44:43,399 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:44:50,454 | INFO | 10.14.35.20 - - [23/Apr/2026 19:44:50] "GET / HTTP/1.1" 200 -
+2026-04-23 19:44:55,407 | INFO | User login successful: student
+2026-04-23 19:44:55,408 | INFO | 10.14.35.20 - - [23/Apr/2026 19:44:55] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 19:44:55,533 | INFO | 10.14.35.20 - - [23/Apr/2026 19:44:55] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 19:45:18,556 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:45:18,558 | INFO | 10.14.35.20 - - [23/Apr/2026 19:45:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:17,226 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:46:17,228 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:17] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:19,557 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:46:19,557 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:19] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:22,568 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:46:22,568 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:22] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:25,572 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:46:25,572 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:25] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:28,560 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:46:28,560 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:28] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:31,562 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:46:31,562 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:31] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:34,560 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:46:34,562 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:34] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:37,564 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:46:37,565 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:37] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:40,563 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:46:40,563 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:40] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:43,564 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:46:43,564 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:43] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:46,557 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:46:46,559 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:46] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:49,558 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:46:49,558 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:49] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:52,569 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:46:52,569 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:52] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:55,564 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:46:55,564 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:55] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:46:58,562 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:46:58,562 | INFO | 10.14.35.20 - - [23/Apr/2026 19:46:58] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:47:01,566 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:47:01,566 | INFO | 10.14.35.20 - - [23/Apr/2026 19:47:01] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:47:04,560 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:47:04,563 | INFO | 10.14.35.20 - - [23/Apr/2026 19:47:04] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:47:07,565 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:47:07,570 | INFO | 10.14.35.20 - - [23/Apr/2026 19:47:07] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:47:10,558 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:47:10,558 | INFO | 10.14.35.20 - - [23/Apr/2026 19:47:10] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:47:13,562 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:47:13,562 | INFO | 10.14.35.20 - - [23/Apr/2026 19:47:13] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:47:16,553 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 19:47:16,555 | INFO | 10.14.35.20 - - [23/Apr/2026 19:47:16] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:48:18,559 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:48:18,565 | INFO | 10.14.35.20 - - [23/Apr/2026 19:48:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:49:18,567 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:49:18,569 | INFO | 10.14.35.20 - - [23/Apr/2026 19:49:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:50:18,563 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:50:18,563 | INFO | 10.14.35.20 - - [23/Apr/2026 19:50:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:51:18,557 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:51:18,559 | INFO | 10.14.35.20 - - [23/Apr/2026 19:51:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:52:18,560 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 19:52:18,560 | INFO | 10.14.35.20 - - [23/Apr/2026 19:52:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:53:18,560 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 19:53:18,560 | INFO | 10.14.35.20 - - [23/Apr/2026 19:53:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 19:54:12,901 | INFO |  * Detected change in 'c:\\Users\\Rachna kumari\\OneDrive\\Desktop\\mini project devops\\Devops_Mini_Project\\src\\app.py', reloading
+2026-04-23 19:54:12,970 | INFO |  * Restarting with stat
+2026-04-23 19:58:32,002 | INFO | Database initialized successfully.
+2026-04-23 19:58:32,137 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 19:58:32,143 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 19:58:32,145 | INFO |  * Restarting with stat
+2026-04-23 19:58:32,672 | INFO | Database initialized successfully.
+2026-04-23 19:58:32,743 | WARNING |  * Debugger is active!
+2026-04-23 19:58:32,752 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:58:59,919 | INFO | Database initialized successfully.
+2026-04-23 19:59:00,011 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 19:59:00,011 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 19:59:00,015 | INFO |  * Restarting with stat
+2026-04-23 19:59:00,584 | INFO | Database initialized successfully.
+2026-04-23 19:59:00,647 | WARNING |  * Debugger is active!
+2026-04-23 19:59:00,666 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 19:59:07,224 | INFO | 10.14.35.20 - - [23/Apr/2026 19:59:07] "GET / HTTP/1.1" 200 -
+2026-04-23 19:59:11,797 | INFO | User login successful: student
+2026-04-23 19:59:11,801 | INFO | 10.14.35.20 - - [23/Apr/2026 19:59:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 19:59:11,906 | INFO | 10.14.35.20 - - [23/Apr/2026 19:59:11] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 19:59:18,573 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 19:59:18,573 | INFO | 10.14.35.20 - - [23/Apr/2026 19:59:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 20:00:18,565 | CRITICAL | ALERT: SQL Injection detected from 10.14.35.20
+2026-04-23 20:00:18,565 | INFO | 10.14.35.20 - - [23/Apr/2026 20:00:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 20:01:18,560 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 20:01:18,562 | INFO | 10.14.35.20 - - [23/Apr/2026 20:01:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 20:02:18,561 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 20:02:18,563 | INFO | 10.14.35.20 - - [23/Apr/2026 20:02:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 20:03:18,563 | CRITICAL | ALERT: DDoS Attack detected from 10.14.35.20
+2026-04-23 20:03:18,563 | INFO | 10.14.35.20 - - [23/Apr/2026 20:03:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 20:04:18,568 | CRITICAL | ALERT: Port Scan detected from 10.14.35.20
+2026-04-23 20:04:18,570 | INFO | 10.14.35.20 - - [23/Apr/2026 20:04:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 20:04:37,011 | INFO |  * Detected change in 'c:\\Users\\Rachna kumari\\OneDrive\\Desktop\\mini project devops\\Devops_Mini_Project\\src\\app.py', reloading
+2026-04-23 20:04:37,080 | INFO |  * Restarting with stat
+2026-04-23 20:06:02,388 | INFO | Database initialized successfully.
+2026-04-23 20:06:02,494 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 20:06:02,494 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 20:06:02,499 | INFO |  * Restarting with stat
+2026-04-23 20:06:03,089 | INFO | Database initialized successfully.
+2026-04-23 20:06:03,164 | WARNING |  * Debugger is active!
+2026-04-23 20:06:03,171 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 20:06:17,516 | INFO | 10.14.35.20 - - [23/Apr/2026 20:06:17] "GET / HTTP/1.1" 200 -
+2026-04-23 20:06:18,555 | INFO | 10.14.35.20 - - [23/Apr/2026 20:06:18] "[31m[1mGET /threat HTTP/1.1[0m" 401 -
+2026-04-23 20:06:23,163 | INFO | User login successful: student
+2026-04-23 20:06:23,167 | INFO | 10.14.35.20 - - [23/Apr/2026 20:06:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 20:06:23,284 | INFO | 10.14.35.20 - - [23/Apr/2026 20:06:23] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 20:07:18,559 | CRITICAL | ALERT: Brute Force detected from 10.14.35.20
+2026-04-23 20:07:18,563 | INFO | 10.14.35.20 - - [23/Apr/2026 20:07:18] "GET /threat HTTP/1.1" 200 -
+2026-04-23 20:09:04,221 | INFO | 127.0.0.1 - - [23/Apr/2026 20:09:04] "GET / HTTP/1.1" 200 -
+2026-04-23 20:09:22,888 | INFO | User login successful: student
+2026-04-23 20:09:22,890 | INFO | 127.0.0.1 - - [23/Apr/2026 20:09:22] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 20:09:22,933 | INFO | 127.0.0.1 - - [23/Apr/2026 20:09:22] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 20:12:23,730 | INFO | Database initialized successfully.
+2026-04-23 20:12:23,825 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 20:12:23,827 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 20:12:23,831 | INFO |  * Restarting with stat
+2026-04-23 20:12:24,391 | INFO | Database initialized successfully.
+2026-04-23 20:12:24,455 | WARNING |  * Debugger is active!
+2026-04-23 20:12:24,467 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 20:12:31,378 | INFO | 10.14.35.20 - - [23/Apr/2026 20:12:31] "GET / HTTP/1.1" 200 -
+2026-04-23 20:12:36,304 | INFO | User login successful: student
+2026-04-23 20:12:36,310 | INFO | 10.14.35.20 - - [23/Apr/2026 20:12:36] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 20:12:36,511 | INFO | 10.14.35.20 - - [23/Apr/2026 20:12:36] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 20:32:43,032 | INFO | Database initialized successfully.
+2026-04-23 20:32:43,132 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 20:32:43,132 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 20:32:43,135 | INFO |  * Restarting with stat
+2026-04-23 20:32:43,687 | INFO | Database initialized successfully.
+2026-04-23 20:32:43,753 | WARNING |  * Debugger is active!
+2026-04-23 20:32:43,758 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 20:32:55,791 | INFO | 10.14.35.20 - - [23/Apr/2026 20:32:55] "GET / HTTP/1.1" 200 -
+2026-04-23 20:33:00,439 | INFO | User login successful: student
+2026-04-23 20:33:00,442 | INFO | 10.14.35.20 - - [23/Apr/2026 20:33:00] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 20:33:00,525 | INFO | 10.14.35.20 - - [23/Apr/2026 20:33:00] "GET /dashboard HTTP/1.1" 200 -

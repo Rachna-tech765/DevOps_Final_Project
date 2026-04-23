@@ -1,0 +1,3 @@
+2026-04-18 22:45:47,083 - Deployment started for version: v2.0
+2026-04-18 22:46:09,273 - Image cyber-app:v2.0 built successfully.
+2026-04-18 22:46:15,300 - Health Check Passed.
