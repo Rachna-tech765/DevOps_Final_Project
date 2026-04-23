@@ -366,3 +366,33 @@
 2026-04-23 20:33:00,439 | INFO | User login successful: student
 2026-04-23 20:33:00,442 | INFO | 10.14.35.20 - - [23/Apr/2026 20:33:00] "[32mPOST /login HTTP/1.1[0m" 302 -
 2026-04-23 20:33:00,525 | INFO | 10.14.35.20 - - [23/Apr/2026 20:33:00] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 20:36:34,201 | INFO | Database initialized successfully.
+2026-04-23 20:36:34,290 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 20:36:34,290 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 20:36:34,294 | INFO |  * Restarting with stat
+2026-04-23 20:36:34,832 | INFO | Database initialized successfully.
+2026-04-23 20:36:34,899 | WARNING |  * Debugger is active!
+2026-04-23 20:36:34,903 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 20:36:46,251 | INFO | 10.14.35.20 - - [23/Apr/2026 20:36:46] "GET / HTTP/1.1" 200 -
+2026-04-23 20:36:50,653 | INFO | User login successful: student
+2026-04-23 20:36:50,653 | INFO | 10.14.35.20 - - [23/Apr/2026 20:36:50] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 20:36:50,675 | INFO | 10.14.35.20 - - [23/Apr/2026 20:36:50] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 20:41:24,423 | INFO | Database initialized successfully.
+2026-04-23 20:41:24,517 | INFO | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://10.14.35.20:5050
+2026-04-23 20:41:24,517 | INFO | [33mPress CTRL+C to quit[0m
+2026-04-23 20:41:24,517 | INFO |  * Restarting with stat
+2026-04-23 20:41:25,064 | INFO | Database initialized successfully.
+2026-04-23 20:41:25,111 | WARNING |  * Debugger is active!
+2026-04-23 20:41:25,119 | INFO |  * Debugger PIN: 508-143-310
+2026-04-23 20:41:35,797 | INFO | 10.14.35.20 - - [23/Apr/2026 20:41:35] "GET / HTTP/1.1" 200 -
+2026-04-23 20:41:48,044 | INFO | User login successful: student
+2026-04-23 20:41:48,051 | INFO | 10.14.35.20 - - [23/Apr/2026 20:41:48] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-23 20:41:48,069 | INFO | 10.14.35.20 - - [23/Apr/2026 20:41:48] "GET /dashboard HTTP/1.1" 200 -
+2026-04-23 21:13:24,992 | INFO |  * Detected change in 'c:\\Users\\Rachna kumari\\OneDrive\\Desktop\\mini project devops\\Devops_Mini_Project\\src\\app.py', reloading
+2026-04-23 21:13:25,062 | INFO |  * Restarting with stat

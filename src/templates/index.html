@@ -8,6 +8,351 @@
         :root { --bg: #050505; --accent: #0070f3; --card: #111; --danger: #ff4d4d; --text: #888; }
         body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
         
+        /* Sidebar */
+        .sidebar { width: 260px; background: #000; border-right: 1px solid #222; padding: 25px; display: flex; flex-direction: column; z-index: 10; }
+        .logo { color: var(--accent); font-size: 22px; font-weight: bold; margin-bottom: 40px; }
+        .nav-item { padding: 15px; margin-bottom: 8px; border-radius: 10px; cursor: pointer; color: var(--text); transition: 0.3s; }
+        .nav-item.active { background: var(--accent); color: white; box-shadow: 0 5px 15px rgba(0, 112, 243, 0.3); }
+        .nav-item:hover:not(.active) { background: #111; color: white; }
+        .status-footer { margin-top: auto; font-size: 12px; color: #444; pt: 15px; border-top: 1px solid #222; }
+
+        /* Main Area */
+        .main { flex: 1; padding: 40px; overflow-y: auto; position: relative; }
+        .live-tag { position: absolute; top: 20px; right: 40px; font-size: 11px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .pulse { width: 10px; height: 10px; background: var(--danger); border-radius: 50%; animation: blink 1.5s infinite; }
+        @keyframes blink { 50% { opacity: 0.2; } }
+
+        .section { display: none; } .section.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } }
+
+        /* Grid */
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+        .card { background: var(--card); border: 1px solid #222; padding: 20px; border-radius: 12px; transition: 0.3s; }
+        .card:hover { border-color: #444; }
+
+        /* Tables & Vectors */
+        .log-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .log-table th { text-align: left; padding: 15px; color: #555; border-bottom: 1px solid #222; font-size: 12px; text-transform: uppercase; }
+        .log-table td { padding: 15px; border-bottom: 1px solid #181818; font-size: 13px; }
+        .vector { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .v-healthy { background: rgba(0, 255, 0, 0.1); color: #00ff00; }
+        .v-attack { background: rgba(255, 77, 77, 0.1); color: var(--danger); }
+
+        /* Alert Boxes */
+        .alert-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
+        .incident-box { background: var(--card); border: 1px solid #222; padding: 25px; border-radius: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border: 2px solid #1a1a1a; transition: 0.3s; }
+        .incident-box:hover { border-color: #333; }
+        .btn-analyze { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; }
+
+        canvas { width: 100% !important; max-height: 350px; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo">🛡️ SEC-NODE</div>
+        <div class="nav-item active" onclick="tab('overview', this)">Overview</div>
+        <div class="nav-item" onclick="tab('logs', this)">Threat Logs</div>
+        <div class="nav-item" onclick="tab('alerts', this)">Alert Center</div>
+        <div class="status-footer"><span style="color:#00ff00">●</span> Status: Normal<br>Node: US-EAST-CLUSTER</div>
+    </div>
+
+    <div class="main">
+        <div class="live-tag"><div class="pulse"></div> LIVE MONITORING</div>
+
+        <div id="overview" class="section active">
+            <h1>System Intelligence</h1>
+            <div class="stat-grid">
+                <div class="card"><small>Threats</small><div style="font-size:32px; color:var(--danger)">0</div></div>
+                <div class="card"><small>Escalations</small><div style="font-size:32px; color:var(--accent)">0</div></div>
+                <div class="card"><small>Requests</small><div style="font-size:32px">0</div></div>
+                <div class="card"><small>Latency</small><div style="font-size:32px; color:#facc15">24ms</div></div>
+            </div>
+            <div class="card" style="height: 380px;">
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+
+        <div id="logs" class="section">
+            <h1>Threat Logs</h1>
+            <p style="color:var(--text); font-size:14px; margin-bottom:20px;">Live telemetry stream (Persistent History)</p>
+            <div class="card" style="padding:0">
+                <table class="log-table">
+                    <thead><tr><th>SOURCE IP</th><th>TIMESTAMP</th><th>ENDPOINT</th><th>VECTOR</th><th>ACTION</th></tr></thead>
+                    <tbody id="log-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="alerts" class="section">
+            <h1>Alert Center</h1>
+            <p style="color:var(--text); font-size:14px; margin-bottom:30px;">Grouped incidents and risk distribution</p>
+            <div class="alert-row">
+                <div id="incident-list">
+                    </div>
+                <div class="card" style="text-align:center">
+                    <h4>Risk Vector Distribution</h4>
+                    <canvas id="donutChart"></canvas>
+                    <p style="font-size:12px; color:var(--text); margin-top:30px">Proportional distribution of incident severity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function tab(id, el) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            el.classList.add('active');
+        }
+
+        // --- CHARTS SETUP ---
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(lineCtx, {
+            type: 'line',
+            data: { labels: Array(20).fill(''), datasets: [{ label: 'Network Velocity (Req/s)', data: Array(20).fill(60), borderColor: '#0070f3', backgroundColor: 'rgba(0,112,243,0.05)', fill: true, tension: 0.4, pointRadius: 4 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: true, mode: 'index', intersect: false } }, scales: { x: { display: false }, y: { grid: { color: '#111' }, ticks: { color: '#444' } } } }
+        });
+
+        const donutCtx = document.getElementById('donutChart').getContext('2d');
+        const donutChart = new Chart(donutCtx, {
+            type: 'doughnut',
+            data: { labels: ['Critical', 'High', 'Medium'], datasets: [{ data: [0, 0, 0], backgroundColor: ['#ff4d4d', '#facc15', '#0070f3'], borderWidth: 0 }] },
+            options: { cutout: '80%', plugins: { legend: { position: 'bottom', labels: { color: '#888', usePointStyle: true, padding: 20 } } } }
+        });
+
+        // --- THE MAGIC: DATA SYNC LOOP ---
+        async function updateDashboard() {
+            try {
+                const response = await fetch('/api/telemetry');
+                const data = await response.json();
+
+                // 1. Update Charts Data
+                lineChart.data.datasets[0].data = data.history.map(item => item.velocity);
+                lineChart.update('none');
+
+                // Update Pie Chart to match Backend fixed data
+                donutChart.data.datasets[0].data = data.donut_data;
+                donutChart.update('none');
+
+                // 2. Update Threat Logs Table
+                const logBody = document.getElementById('log-list');
+                logBody.innerHTML = '';
+                data.logs.forEach(log => {
+                    const row = document.createElement('tr');
+                    const vectorClass = log.vector === 'Healthy' ? 'v-healthy' : 'v-attack';
+                    const ipColor = log.vector === 'Healthy' ? '#fff' : 'var(--danger)';
+                    
+                    row.innerHTML = `
+                        <td style="padding:15px; color:${ipColor}">${log.ip}</td>
+                        <td style="padding:15px">${log.timestamp}</td>
+                        <td style="padding:15px; color:#ff00ff">${log.endpoint}</td>
+                        <td style="padding:15px"><span class="vector ${vectorClass}">${log.vector}</span></td>
+                        <td style="padding:15px">${log.action === 'Analyze' ? '<a style="color:var(--accent); cursor:pointer">Analyze</a>' : '-'}</td>
+                    `;
+                    logBody.appendChild(row);
+                });
+
+                // 3. Update Alert Center Incident Cards (Mandatory Boxes)
+                const incidentList = document.getElementById('incident-list');
+                const threatTypes = ['Brute Force', 'Sql Injection', 'Invasive Scan', 'Xss Attempt'];
+                const threatIps = ['185.22.1.99', '203.45.1.12', '45.1.22.11', '102.3.44.1'];
+                const threatPerc = ['98%', '87%', '82%', '65%'];
+
+                incidentList.innerHTML = '';
+                for(let i=0; i<4; i++) {
+                    if(data.cards_data[i] > 0) {
+                        const box = document.createElement('div');
+                        box.className = 'incident-box';
+                        const labelColor = threatTypes[i] === 'Healthy' ? 'var(--text)' : 'var(--accent)';
+                        
+                        box.innerHTML = `
+                            <div>
+                                <small style="color:${labelColor}; text-transform:uppercase">${threatTypes[i]}</small>
+                                <h2 style="margin:5px 0">${data.cards_data[i]} Events</h2>
+                                <span style="color:var(--accent)">${threatIps[i]}</span>
+                            </div>
+                            <div style="text-align:right;">
+                                <button class="btn-analyze">Analyze</button>
+                                <div style="font-size:24px; font-weight:600; margin-top:10px">${threatPerc[i]}</div>
+                            </div>
+                        `;
+                        incidentList.appendChild(box);
+                    }
+                }
+
+                // 4. Update Overview Header Stats
+                const stats = document.querySelectorAll('.stat-grid .card b');
+                stats[0].innerText = data.active_threats;
+                // Add velocity to overview Requests if needed, otherwise keep fixed
+
+            } catch (error) { console.error('Dashboard sync error:', error); }
+        }
+
+        // Start the continuous sync every 2 seconds
+        setInterval(updateDashboard, 2000);
+        updateDashboard(); // Initial load
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SEC-NODE Intelligence | 192.168.1.157</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --bg: #050505; --accent: #0070f3; --card: #111; --danger: #ff4d4d; --text: #888; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+        .sidebar { width: 260px; background: #000; border-right: 1px solid #222; padding: 25px; display: flex; flex-direction: column; }
+        .logo { color: var(--accent); font-size: 22px; font-weight: bold; margin-bottom: 40px; }
+        .nav-item { padding: 15px; margin-bottom: 5px; border-radius: 8px; cursor: pointer; color: var(--text); }
+        .nav-item.active { background: var(--accent); color: white; }
+        .main { flex: 1; padding: 40px; overflow-y: auto; }
+        .live { float: right; color: var(--danger); font-size: 11px; animation: blink 1.5s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .section { display: none; } .section.active { display: block; }
+        
+        /* LOGS PAGE CSS: Perfect matching */
+        .logs-wrap { background: var(--card); border: 1px solid #222; border-radius: 12px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { text-align: left; color: var(--text); padding: 15px; border-bottom: 1px solid #222; font-size: 12px; }
+        td { padding: 15px; border-bottom: 1px solid #1a1a1a; font-size: 13px; }
+        .vector-badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .vector-healthy { background: rgba(0, 255, 0, 0.1); color: #00ff00; }
+        .vector-brute { background: rgba(255, 77, 77, 0.1); color: var(--danger); }
+        .vector-xss { background: rgba(255, 0, 255, 0.1); color: #ff00ff; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">🛡️ SEC-NODE</div>
+        <div class="nav-item active" onclick="tab('overview', this)">Overview</div>
+        <div class="nav-item" onclick="tab('logs', this)">Threat Logs</div>
+        <div class="nav-item" onclick="tab('alerts', this)">Alert Center</div>
+        <div style="margin-top:auto; font-size:12px; color:#444">Status: Normal<br>Node: US-EAST-CLUSTER</div>
+    </div>
+    <div class="main">
+        <div class="live">● LIVE MONITORING</div>
+        
+        <div id="overview" class="section active">
+            <h1>Intelligence</h1>
+            <p>Node integrity: 100%. Latency: 24ms.</p>
+        </div>
+
+        <div id="logs" class="section">
+            <h1 style="margin-bottom:10px;">Threat Logs</h1>
+            <p style="color:var(--text); font-size:14px; margin-bottom:20px;">Live telemetry stream (Persistent History)</p>
+            <div class="logs-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SOURCE IP</th>
+                            <th>TIMESTAMP</th>
+                            <th>ENDPOINT</th>
+                            <th>VECTOR</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-list">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="alerts" class="section">
+            <h1>Alert Center</h1>
+            <div style="display:grid; grid-template-columns: 2fr 1fr; gap:20px">
+                <div>
+                    <div class="card" style="margin-bottom:10px"><b>BRUTE FORCE</b><br>54 Events - 185.22.1.99</div>
+                    <div class="card"><b>SQL INJECTION</b><br>21 Events - 203.45.1.12</div>
+                </div>
+                <div class="card" style="text-align:center">Severity Matrix<br><canvas id="donut"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function tab(id, el) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            el.classList.add('active');
+            
+            // Fetch logs only when Threats Logs is active
+            if(id === 'logs') fetchLogs();
+        }
+
+        // --- REAL-TIME DATA ANALYSIS FOR LOGS PAGE ---
+        async function fetchLogs() {
+            try {
+                const response = await fetch('/api/threat_logs');
+                const data = await response.json();
+                
+                const body = document.getElementById('log-list');
+                body.innerHTML = ''; // Clear old logs
+                
+                data.forEach(log => {
+                    const row = document.createElement('tr');
+                    let vectorClass = '';
+                    if(log.vector === 'Healthy') vectorClass = 'vector-healthy';
+                    else if(log.vector === 'Brute Force') vectorClass = 'vector-brute';
+                    else vectorClass = 'vector-xss';
+                    
+                    row.innerHTML = `
+                        <td style="color:var(--danger)">${log.source_ip}</td>
+                        <td>${log.timestamp}</td>
+                        <td style="color:#ff00ff; font-family:monospace">${log.endpoint}</td>
+                        <td><span class="vector-badge ${vectorClass}">${log.vector}</span></td>
+                        <td>${log.action === '-' ? '-' : '<a style="color:var(--accent); cursor:pointer">Analyze</a>'}</td>
+                    `;
+                    body.appendChild(row);
+                });
+            } catch (e) { console.error("Could not fetch logs"); }
+        }
+
+        // Re-fetch logs every 3 seconds for live monitoring
+        setInterval(() => {
+            if(document.getElementById('logs').classList.contains('active')) fetchLogs();
+        }, 3000);
+
+        // Donut Chart logic fixed (Severity vs Count Viva point)
+        new Chart(document.getElementById('donut'), {
+            type: 'doughnut',
+            data: { datasets: [{ data: [60, 25, 15], backgroundColor: ['#ff4d4d', '#ffb800', '#0070f3'] }] },
+            options: { cutout: '80%', plugins: { legend: { position: 'bottom', labels: { color: '#888', padding: 20 } } } }
+        });
+    </script>
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SEC-NODE Intelligence Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --bg: #050505; --accent: #0070f3; --card: #111; --danger: #ff4d4d; --text: #888; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+        
         /* SIDEBAR */
         .sidebar { width: 260px; background: #000; border-right: 1px solid #222; padding: 25px; display: flex; flex-direction: column; z-index: 10; }
         .logo { color: var(--accent); font-size: 22px; font-weight: bold; margin-bottom: 40px; }
@@ -170,7 +515,7 @@
         }, 3000);
     </script>
 </body>
-</html>
+</html> -->
 
 
 

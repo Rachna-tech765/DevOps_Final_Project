@@ -1,4 +1,73 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SEC-NODE Intelligence | New User Registration</title>
+    <style>
+        :root { --bg: #050505; --accent: #0070f3; --card: #111; --text: #fff; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        
+        .signup-wrap {
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid #222;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            width: 350px;
+        }
+
+        h2 { font-weight: 300; letter-spacing: 1px; color: var(--accent); margin-bottom: 40px; text-transform: uppercase; }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            background: transparent;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            transition: 0.3s;
+        }
+        input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 10px rgba(0, 112, 243, 0.3); }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            border: none;
+            color: #000;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover { background: #0ea5e9; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 112, 243, 0.2); }
+
+        .form-footer { font-size: 13px; color: #555; margin-top: 30px; }
+        .form-footer a { color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="signup-wrap">
+        <h2>🛡️ SEC-NODE</h2>
+        <h3 style="font-weight:300; font-size:16px; color:#888; margin-bottom:40px;">New User Registration</h3>
+        <form action="/register" method="POST">
+            <input type="text" name="username" placeholder="Choose Username" required>
+            <input type="password" name="password" placeholder="Strong Password (e.g. Rachna@2026)" required>
+            <button type="submit">Complete Registration</button>
+        </form>
+        <div class="form-footer">
+            Already have an account? <a href="/">Login here</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Register - Cyber Security</title>
@@ -12,4 +81,4 @@
     </form>
     <p>Already have an account? <a href="/" style="color: cyan;">Login here</a></p>
 </body>
-</html>
+</html> -->
